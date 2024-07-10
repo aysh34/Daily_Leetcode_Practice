@@ -12,5 +12,5 @@ class Solution:
             return False
         return True
     
-        # 3rd approach
+        # 3rd approach 
         return len(set(nums)) < len(nums)
