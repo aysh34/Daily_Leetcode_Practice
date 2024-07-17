@@ -11,6 +11,6 @@ class Solution:
         if len(nums) == len(set(nums)):
             return False
         return True
-    
+   
         # 3rd approach 
         return len(set(nums)) < len(nums)
