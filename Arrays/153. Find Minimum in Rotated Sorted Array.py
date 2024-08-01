@@ -9,4 +9,4 @@ class Solution:
                 e = mid
         return nums[
             s
-        ]  # Return nums[s] or nums[e], whichever points to the minimum element
+        ]  # Return nums[s] or nums[e], both points to the minimum element
