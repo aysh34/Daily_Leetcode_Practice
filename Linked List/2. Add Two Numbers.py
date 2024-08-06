@@ -8,7 +8,7 @@ class Solution:
         self, l1: Optional[ListNode], l2: Optional[ListNode]
     ) -> Optional[ListNode]:
         dummy = ListNode()
-        cur = dummy
+        tail = dummy
         carry = 0
         p1 = l1  # p1 points to head of l1
         p2 = l2
@@ -20,9 +20,9 @@ class Solution:
             carry = sumValues // 10
             newNode = ListNode(
                 digit
-            )  # creating new node and pointing cur.next to that new node
-            cur.next = newNode
-            cur = cur.next  # move cur pointer to newly added node
+            )  # creating new node and pointing tail.next to that new node
+            tail.next = newNode
+            tail = tail.next  # move tail pointer to newly added node
             p1 = p1.next if p1 else None  # move p1 to next node of l1 if p1 exists
             p2 = p2.next if p2 else None
         return dummy.next
