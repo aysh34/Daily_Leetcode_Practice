@@ -1,39 +1,40 @@
 class Solution:
     def balanceBST(self, root: TreeNode) -> TreeNode:
+        self.arr = []
+        self.inOrderTraversal(root)
+        return self.arrToBst(0, len(self.arr) - 1)
 
-        def inOrder(node):
-            # res --> a list of TreeNode objects.It’s just a list of nodes arranged in the sequence they should appear in a balanced BST.
-            res = []
-            if not node:
-                return res
-            res.extend(inOrder(node.left))
-            res.append(node)  # Append the actual node, not just the value
-            res.extend(inOrder(node.right))
-            return res
+    def inOrderTraversal(self, node):
+        if not node:
+            return
+        self.inOrderTraversal(node.left)
+        self.arr.append(node)
+        self.inOrderTraversal(node.right)
 
-            # if not node:
-            #     return []
-            # return inOrder(node.left) + [node.val] + inOrder(node.right)
+    def arrToBst(self, left, right):
+        if left > right:
+            return None
+        mid = (left + right) // 2
+        root = self.arr[mid]
+        root.left = self.arrToBst(left, mid - 1)
+        root.right = self.arrToBst(mid + 1, right)
+        return root
 
-        def arrayToBst(nodes, left, right):  # nodes == sorted array of nodes
-            if left > right:
-                return None
+        # def inOrder(node):
+        #     res = []  # a list of TreeNode objects
+        #     if not node:
+        #         return res
+        #     return inOrder(node.left) + [node] + inOrder(node.right)
 
-            m = (left + right) // 2
-            root_node = nodes[m]  # Use the middle node directly
-            root_node.left = arrayToBst(nodes, left, m - 1)
-            root_node.right = arrayToBst(nodes, m + 1, right)
-            return root_node
-
-        # def arrayToBst(sorted_array, left, right):
-        #     if left > right:  # Base case to stop recursion
+        # def arrayToBst(nodes, left, right):  # nodes == sorted array of nodes
+        #     if left > right:
         #         return None
-        # m = (left + right) // 2
 
-        # new_node = TreeNode(sorted_array[m])
-        # new_node.left = arrayToBst(sorted_array, left, m - 1)
-        # new_node.right = arrayToBst(sorted_array, m + 1, right)
-        # return new_node
+        #     m = (left + right) // 2
+        #     root_node = nodes[m]  # Use the middle node directly
+        #     root_node.left = arrayToBst(nodes, left, m - 1)
+        #     root_node.right = arrayToBst(nodes, m + 1, right)
+        #     return root_node
 
-        sorted_nodes = inOrder(root)
-        return arrayToBst(sorted_nodes, 0, len(sorted_nodes) - 1)
+        # sorted_nodes = inOrder(root)
+        # return arrayToBst(sorted_nodes, 0, len(sorted_nodes) - 1)
