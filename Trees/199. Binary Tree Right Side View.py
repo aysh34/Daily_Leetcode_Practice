@@ -29,3 +29,21 @@ class Solution:
             # rightSideView.append(node.val)
         
         return rightSideView
+    # dfs approach
+    # def rightSideView(self, root: Optional[TreeNode]) -> List[int]:
+    #    self.rightSide = []
+    #     self.dfs(root,0)
+    #     return self.rightSide
+
+    # def dfs(self,node,depth):
+    #     if not node:
+    #         return []
+               
+    #     if depth == len(self.rightSide):
+    #         self.rightSide.append(node.val)
+        
+    #     self.dfs(node.right,depth+1)
+    #     self.dfs(node.left,depth+1)
+
+    #     return self.rightSide
+
