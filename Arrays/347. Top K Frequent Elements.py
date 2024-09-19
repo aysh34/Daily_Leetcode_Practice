@@ -29,3 +29,5 @@ class Solution:
         # sortedKeysList = sorted(map.keys(), key = lambda x: map[x], reverse=True) # descending order
 
         # return sortedKeysList[:k] # TC : o(n log n)
+        
+        # 3rd approach O(n) --> Bucket Sort
